@@ -11,8 +11,8 @@ enum Constants {
     static let background = "background"
     static let weatherColour = "weatherColour"
     static let celsius = "°C"
-    static let searchSF = ""
-    static let geoSF = ""
-    static let search = ""
-    static let conditionSF = ""
+    static let searchSF = "magnifyingglass"
+    static let geoSF = "location.circle.fill"
+    static let search = "Search"
+    static let coditionSF = "cloud.rain"
 }
