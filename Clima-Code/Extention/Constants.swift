@@ -15,4 +15,5 @@ enum Constants {
     static let geoSF = "location.circle.fill"
     static let search = "Search"
     static let coditionSF = "cloud.rain"
+    static let id = "fa12b43efaac31a59f56cf50fc900364"
 }
