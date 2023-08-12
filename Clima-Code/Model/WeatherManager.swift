@@ -2,7 +2,7 @@
 //  WeatherManager.swift
 //  Clima App
 //
-//  Created by Konstantin on 13.04.2022.
+//  Created by Danila Bolshakov on 13.04.2022.
 //
 
 import Foundation
@@ -25,8 +25,8 @@ struct WeatherManager {
         performRequest(with: urlString)
     }
     
-    func fetchWeather(latitide: CLLocationDegrees, longitude: CLLocationDegrees) {
-        let urlString = "\(weatherURL)&lat=\(latitide)&lon=\(longitude)"
+    func fetchWeather(latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
+        let urlString = "\(weatherURL)&lat=\(latitude)&lon=\(longitude)"
         performRequest(with: urlString)
     }
     
@@ -41,7 +41,7 @@ struct WeatherManager {
         // 3. Give the session a task
         let task = session.dataTask(with: url) { data, response, error in
             
-            if let error {
+            if let error = error  {
                 delegate?.didFailWithError(error: error)
                 return
             }
@@ -59,8 +59,9 @@ struct WeatherManager {
         let decoder = JSONDecoder()
         do {
             print("weatherData: \(wearheData)")
+            
             if let jsonResponse = String(data: wearheData, encoding: String.Encoding.utf8) {
-                print("Response: \(jsonResponse)")
+                print("Response: \(jsonResponse)") //проверка
             }
             
             let decodedData = try decoder.decode(WeatherData.self, from: wearheData)
@@ -74,8 +75,8 @@ struct WeatherManager {
             let weather = WeatherModel(weatherData: decodedData)
             
             return weather
-        } catch {
-            delegate?.didFailWithError(error: error)
+        } catch let errorNew {
+            delegate?.didFailWithError(error: errorNew)
             return nil
         }
     }
