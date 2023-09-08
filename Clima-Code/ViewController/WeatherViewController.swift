@@ -225,7 +225,7 @@ extension WeatherViewController: CLLocationManagerDelegate {
     }
 }
 
-extension WeatherViewController: WeatherManagerDelegate {
+extension WeatherViewController: SearchManagerDelegate {
     
     func didUpdateWeather(weather: WeatherModel) {
         DispatchQueue.main.async {
@@ -268,28 +268,3 @@ extension WeatherViewController: UITextFieldDelegate {
         searchTextField.text = ""
     }
 }
-
-        
-        
-//        NSLayoutConstraint.activate([
-//            backgroundImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-//            backgroundImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-//            backgroundImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-//            backgroundImageView.topAnchor.constraint(equalTo: view.topAnchor),
-//
-//            mainStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 24),
-//            mainStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -24),
-//            mainStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -24),
-//            mainStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 24),
-//
-//            headerStackView.widthAnchor.constraint(equalTo: mainStackView.widthAnchor),
-//
-//            geoButton.widthAnchor.constraint(equalToConstant: 40),
-//            geoButton.heightAnchor.constraint(equalToConstant: 40),
-//
-//            searchButton.widthAnchor.constraint(equalToConstant: 40),
-//            searchButton.heightAnchor.constraint(equalToConstant: 40),
-//
-//            coditionalmageView.widthAnchor.constraint(equalToConstant: 120),
-//            coditionalmageView.heightAnchor.constraint(equalToConstant: 120),
-//        ])

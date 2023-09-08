@@ -16,6 +16,7 @@ protocol WeatherManagerDelegate {
 
 struct WeatherManager {
     
+    //Basic URL
     let weatherURL = "https://api.openweathermap.org/data/2.5/weather?appid=\(Constants.id)&units=metric"
     
     var delegate: WeatherManagerDelegate?
@@ -30,6 +31,10 @@ struct WeatherManager {
         performRequest(with: urlString)
     }
     
+    
+    
+    
+    
     func performRequest(with urlString: String) {
         
         // 1. Create a URL
@@ -41,9 +46,9 @@ struct WeatherManager {
         // 3. Give the session a task
         let task = session.dataTask(with: url) { data, response, error in
             
-            if let error = error  {
-                delegate?.didFailWithError(error: error)
-                return
+        if let error = error  {
+            delegate?.didFailWithError(error: error)
+            return
             }
             
             guard let safeData = data else { return }
@@ -65,17 +70,12 @@ struct WeatherManager {
             }
             
             let decodedData = try decoder.decode(WeatherData.self, from: wearheData)
-            
-//            let id = decodedData.weather[0].id
-//            let temp = decodedData.main.temp
-//            let name = decodedData.name
-//
-//            let weather = WeatherModel(conditionId: id, cityName: name, temperature: temp)
-            
+        
             let weather = WeatherModel(weatherData: decodedData)
             
             return weather
         } catch let errorNew {
+            
             delegate?.didFailWithError(error: errorNew)
             return nil
         }
